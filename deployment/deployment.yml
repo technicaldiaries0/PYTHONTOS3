@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pythontos3
+  labels:
+     app: myapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+       app: myapp
+  template:
+    metadata:
+     labels:
+       app: myapp
+    spec:
+     containers:
+       - name: mycontainer
+         image: technicaldiaries0/pythonapp1:latest
+         ports:
+           - containerPort: 80
+    

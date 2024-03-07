@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "pythontos3.fullname" . }}
+  labels:
+    {{- include "pythontos3.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: 80 #{{ .Values.service.port }}
+      targetPort: 5000
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "pythontos3.selectorLabels" . | nindent 4 }}
